@@ -4,7 +4,7 @@
 
 The app comes pre built, it can be viewed by opening the `index.html` file in `dist`.
 
-When you run the app you will see two persisted stock items.
+When you run the app you will see two persisted stock items. The main view lists out the current stock. To add an item to the stock you can click the burger menu in the upper left corner then select `Add a New Stock Item`. You will be presented with a dialog to enter the stock details.
 
 ----
 

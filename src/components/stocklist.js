@@ -19,7 +19,7 @@ const StockList = ({stocks}) => (
         <TableHeaderColumn>Name</TableHeaderColumn>
         <TableHeaderColumn>Description</TableHeaderColumn>
         <TableHeaderColumn>Price</TableHeaderColumn>
-        <TableHeaderColumn>Date</TableHeaderColumn>
+        <TableHeaderColumn>Date Available</TableHeaderColumn>
         <TableHeaderColumn>Taxable ?</TableHeaderColumn>
       </TableRow>
     </TableHeader>
