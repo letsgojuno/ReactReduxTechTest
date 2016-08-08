@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import serialize from 'form-serialize';
 
@@ -42,7 +42,7 @@ class AddStockForm extends Component {
 
     return (
       <Dialog
-        title="Add New Stock"
+        title="Add a New Stock"
         actions={dialogActions}
         open={open}
         onRequestClose={closeRequest}

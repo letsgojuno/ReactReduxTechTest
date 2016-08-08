@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import Snackbar from 'material-ui/Snackbar';
-
 import AddStockForm from './addStockForm';
 import StockList from './stocklist';
-
 import {addStock} from '../state/actions/';
 
 class App extends Component {
@@ -52,7 +49,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <AppBar
-            title=""
+            title="ShopKeep Stocks - Demo by Michael Mathews"
             style={{
               textAlign: 'center'
             }}
@@ -76,7 +73,7 @@ class App extends Component {
             <MenuItem onTouchTap={() => this.setState({
               dialog: true,
               drawer: false
-            })}>Add New Stock</MenuItem>
+            })}>Add a New Stock</MenuItem>
           </Drawer>
 
           <Snackbar
