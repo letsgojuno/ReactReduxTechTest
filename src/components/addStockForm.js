@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import serialize from 'form-serialize';
-
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import Checkbox from 'material-ui/Checkbox';
 
-import {capitalize} from '../utils/';
+import {capitalize} from '../utils/index.js';
 
 class AddStockForm extends Component {
   constructor(props) {

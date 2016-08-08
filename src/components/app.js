@@ -6,8 +6,9 @@ import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import Snackbar from 'material-ui/Snackbar';
 import AddStockForm from './addStockForm';
+
 import StockList from './stocklist';
-import {addStock} from '../state/actions/';
+import {addStock} from '../state/actions/index.js';
 
 class App extends Component {
   constructor(props) {
@@ -19,13 +20,13 @@ class App extends Component {
       snackbar_message: ''
     };
 
-    this.addStock = this.props.onAddStock
+    this.addStock = this.props.onAddStock;
   }
 
   closeDialog() {
     this.setState({
       dialog: false
-    })
+    });
   }
 
   handleFormSubmit(err, input) {
