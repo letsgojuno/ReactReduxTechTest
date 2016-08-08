@@ -1,5 +1,7 @@
 # ShopKeep Coding Test - Michael Mathews
 
+
+
 ##Choice of stack
 - React
 - Redux
