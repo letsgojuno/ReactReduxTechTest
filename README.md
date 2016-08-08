@@ -31,7 +31,7 @@ After reading the brief I choose the following stack. I feel it suited the requi
 React was suggested in the brief and it's my preference for front-end lib. It's perfect for creating and composing small components into full web apps.
 
 ###Redux
-Redux solves the issue of state. Again it is my prefered lib for managing front-end state. It works well at scale and is perfect working with backend apis and persisted data on the server. There are a number of differnt async plugins which help with this.
+Redux solves the issue of state. Again it is my prefered lib for managing front-end state. It works well at scale and is perfect working with backend apis and persisted data on the server. There are a number of differnt async plugins which help with this. Redux stores are immutable and changes are carried out through reducers and actions, this makes things like undo/redo simple.
 
 ###React Material UI.
 Altho a little bloated I felt it would be perfect for this brief. Material UI is a suite of UI components that are easily pieced together. It helped take away some of the pressure of creating my own presentational layer for this demo. I was able to focus on JS/react.
