@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "budo src/index.js --dir src --open -- -t babelify"
+    "dev": "budo src/index.js --dir src --open -- -t babelify",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "Michael Mathews <mmathews87@gmail.com> (http://letsgojuno.com)",

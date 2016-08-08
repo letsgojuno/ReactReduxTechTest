@@ -7,6 +7,11 @@ import ContentClear from 'material-ui/svg-icons/content/clear';
 
 import {formatCurrency} from '../utils/';
 
+/**
+ * Stock Item is a stateless react component. Rendered based on
+ * the stock item that is passed in as props.
+ * @param  {Object} options.stock Stock item.
+ */
 const StockItem = ({stock}) => (
   <TableRow>
     <TableRowColumn>{stock.id}</TableRowColumn>
