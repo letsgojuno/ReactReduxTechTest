@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {reduxForm} from 'redux-form';
+import debounce from 'lodash.debounce';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -10,46 +10,65 @@ import Checkbox from 'material-ui/Checkbox';
 class NewStockForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
+
+    this.debouncedInput = debounce(this.handleTextChange, 200)
+  }
+
+  handleTextChange(name, value) {
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleDataChange(type, data) {
+    this.setState({
+      [type]: data
+    })
   }
 
   render() {
-    const {fields: {name, description, price, date, taxable}, handleSubmit, open, closeRequest} = this.props;
-
+    const {handleSubmit, open, closeRequest} = this.props;
     const dialogActions = [
-      <FlatButton label="Cancel" primary={true} onTouchTap={closeRequest}
-      />,
-
-      <FlatButton label="Ok" primary={true} onTouchTap={() =>
-          handleSubmit()}
-      />,
+      <FlatButton label="Cancel" onTouchTap={closeRequest} />,
+      <FlatButton label="Ok" onTouchTap={() => handleSubmit(this.state) }/>,
     ];
 
     return (
       <Dialog
         title="Add New Stock"
         actions={dialogActions}
-        modal={false}
         open={open}
         onRequestClose={closeRequest}
       >
         <form onSubmit={handleSubmit}>
-          <TextField name="name" hintText="Name"/><br />
-          <TextField name="description" hintText="Description"/><br />
-          <TextField name="price" hintText="Price"/><br />
-          <DatePicker name="date" hintText="Date" mode="landscape" />
+          <TextField
+            name="name"
+            onChange={(e, v) => this.debouncedInput(e.target.name, v)}
+            hintText="Name"/><br />
+          <TextField
+            name="description"
+            onChange={(e, v) => this.debouncedInput(e.target.name, v)}
+            fullWidth={true}
+            hintText="Description"/><br />
+          <TextField
+            name="price"
+            onChange={(e, v) => this.debouncedInput(e.target.name, v)}
+            hintText="Price"/><br />
+          <DatePicker
+            name="date"
+            onChange={(e, date) => this.handleDataChange('date', date.toString())}
+            hintText="Date"
+            mode="landscape" /><br />
           <Checkbox
             name="taxable"
+            onCheck={(ev, checked) => this.handleDataChange('taxable', checked)}
             label="Taxable"
-            defaultChecked={false}
-          />
+            defaultChecked={false} />
         </form>
       </Dialog>
     );
   }
 }
 
-
-export default reduxForm({
-  form: 'form',
-  fields: ['name', 'description', 'price', 'date', 'taxable']
-})(NewStockForm)
+export default NewStockForm;

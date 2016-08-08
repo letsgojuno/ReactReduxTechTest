@@ -18,7 +18,9 @@
     "budo": "^8.3.0"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.7",
     "material-ui": "^0.15.3",
+    "moment": "^2.14.1",
     "node-uuid": "^1.4.7",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",

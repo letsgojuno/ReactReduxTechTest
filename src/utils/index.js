@@ -1,2 +1,2 @@
 export const formatCurrency = (value, symbol = '£') =>
-  `${symbol}${value.toFixed(2)}`;
+  `${symbol}${parseFloat(value).toFixed(2)}`;

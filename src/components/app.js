@@ -6,12 +6,10 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 
-
 import NewStockForm from './newStockForm';
 import StockList from './stocklist';
 
 import {addStock} from '../state/actions/';
-
 
 class App extends Component {
   constructor(props) {
@@ -22,12 +20,20 @@ class App extends Component {
     };
   }
 
+  closeDialog() {
+    this.setState({
+      dialog: false
+    })
+  }
+
   render() {
+    const {onAddStock} = this.props;
+
     return (
       <MuiThemeProvider>
         <div>
           <AppBar
-            title="ShopKeep Stocks"
+            title=""
             style={{
               textAlign: 'center'
             }}
@@ -37,14 +43,16 @@ class App extends Component {
           <StockList />
 
           <NewStockForm
-            closeRequest={() => this.setState({
-              dialog: false
-            })}
             open={this.state.dialog}
+            handleSubmit={(stockData) => {
+              // console.log(stockData);
+              onAddStock(stockData);
+              this.closeDialog();
+            }}
+            closeRequest={this.closeDialog.bind(this)}
             />
 
           <Drawer
-            docked={false}
             open={this.state.drawer}
             onRequestChange={(open) => this.setState({
               drawer: open
@@ -61,9 +69,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  name: state.app,
-});
+const mapStateToProps = (state) => ({});
 
 export default connect(
   mapStateToProps,
