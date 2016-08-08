@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
+import {findDOMNode} from 'react-dom';
 import debounce from 'lodash.debounce';
+import serialize from 'form-serialize';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -31,7 +33,15 @@ class NewStockForm extends Component {
     const {handleSubmit, open, closeRequest} = this.props;
     const dialogActions = [
       <FlatButton label="Cancel" onTouchTap={closeRequest} />,
-      <FlatButton label="Ok" onTouchTap={() => handleSubmit(this.state) }/>,
+      <FlatButton label="Ok" onTouchTap={() => {
+        handleSubmit(
+          serialize(findDOMNode(this.refs.form), {
+            hash: true,
+            empty: true
+          }));
+        // handleSubmit(this.state);
+        // this.setState({});
+      }}/>
     ];
 
     return (
@@ -41,7 +51,7 @@ class NewStockForm extends Component {
         open={open}
         onRequestClose={closeRequest}
       >
-        <form onSubmit={handleSubmit}>
+        <form ref="form" onSubmit={handleSubmit}>
           <TextField
             name="name"
             onChange={(e, v) => this.debouncedInput(e.target.name, v)}

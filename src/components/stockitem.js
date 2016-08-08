@@ -15,7 +15,7 @@ const StockItem = ({stock}) => (
     <TableRowColumn>{formatCurrency(stock.price)}</TableRowColumn>
     <TableRowColumn>{moment(stock.date).format("MMM Do YYYY")}</TableRowColumn>
     <TableRowColumn style={{textAlign: 'center'}}>
-      {stock.taxable ?
+      {stock.taxable.length ?
         <ActionDone color={'green'}/> :
         <ContentClear color={'red'} />
       }

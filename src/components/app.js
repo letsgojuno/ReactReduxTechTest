@@ -45,7 +45,7 @@ class App extends Component {
           <NewStockForm
             open={this.state.dialog}
             handleSubmit={(stockData) => {
-              // console.log(stockData);
+              console.log(stockData);
               onAddStock(stockData);
               this.closeDialog();
             }}
