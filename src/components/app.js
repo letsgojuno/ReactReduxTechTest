@@ -5,8 +5,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
+import Snackbar from 'material-ui/Snackbar';
 
-import NewStockForm from './newStockForm';
+import AddStockForm from './addStockForm';
 import StockList from './stocklist';
 
 import {addStock} from '../state/actions/';
@@ -16,8 +17,12 @@ class App extends Component {
     super(props);
     this.state = {
       drawer: false,
-      dialog: false
+      dialog: false,
+      snackbar: false,
+      snackbar_message: ''
     };
+
+    this.addStock = this.props.onAddStock
   }
 
   closeDialog() {
@@ -26,9 +31,23 @@ class App extends Component {
     })
   }
 
-  render() {
-    const {onAddStock} = this.props;
+  handleFormSubmit(err, input) {
+    if (err.length) {
+      console.log(err)
+      this.setState({
+        snackbar_message: `The following fields are required: ${err.join(', ')}`,
+        snackbar: true,
+      })
+    } else {
+      this.addStock(input);
+      this.setState({
+        snackbar: false
+      });
+      this.closeDialog();
+    }
+  }
 
+  render() {
     return (
       <MuiThemeProvider>
         <div>
@@ -42,13 +61,9 @@ class App extends Component {
 
           <StockList />
 
-          <NewStockForm
+          <AddStockForm
             open={this.state.dialog}
-            handleSubmit={(stockData) => {
-              console.log(stockData);
-              onAddStock(stockData);
-              this.closeDialog();
-            }}
+            onSubmit={this.handleFormSubmit.bind(this)}
             closeRequest={this.closeDialog.bind(this)}
             />
 
@@ -63,6 +78,13 @@ class App extends Component {
               drawer: false
             })}>Add New Stock</MenuItem>
           </Drawer>
+
+          <Snackbar
+            open={this.state.snackbar}
+            message={this.state.snackbar_message}
+            onRequestClose={() => this.setState({snackbar: false})}
+            autoHideDuration={3000}
+          />
         </div>
       </MuiThemeProvider>
     );

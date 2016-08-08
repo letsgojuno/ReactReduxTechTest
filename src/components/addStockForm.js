@@ -10,9 +10,10 @@ import Checkbox from 'material-ui/Checkbox';
 
 import {capitalize} from '../utils/';
 
-class NewStockForm extends Component {
+class AddStockForm extends Component {
   constructor(props) {
     super(props);
+    this.onSubmit = props.onSubmit;
   }
 
   validateInput(input) {
@@ -20,26 +21,23 @@ class NewStockForm extends Component {
 
     return requiredFields.reduce((a, x) =>
       !(input.hasOwnProperty(x) && input[x].length) ?
-        a.concat({[x]: `${capitalize(x)} is a required field` }) : a, []);
+        a.concat(`${capitalize(x)}`) : a, []);
+  }
+
+  handleSubmit() {
+    let input = serialize(findDOMNode(this.refs.form), {
+      hash: true,
+      empty: true
+    });
+
+    this.onSubmit(this.validateInput(input), input);
   }
 
   render() {
-    const {handleSubmit, open, closeRequest} = this.props;
+    const {open, closeRequest} = this.props;
     const dialogActions = [
       <FlatButton label="Cancel" onTouchTap={closeRequest} />,
-      <FlatButton label="Ok" onTouchTap={() => {
-        let input = serialize(findDOMNode(this.refs.form), {
-          hash: true,
-          empty: true
-        });
-
-        let errors = this.validateInput(input)
-        if (!errors.length) {
-          handleSubmit(input);
-        } else {
-          console.log(errors);
-        }
-      }}/>
+      <FlatButton label="Ok" onTouchTap={this.handleSubmit.bind(this)}/>
     ];
 
     return (
@@ -49,7 +47,7 @@ class NewStockForm extends Component {
         open={open}
         onRequestClose={closeRequest}
       >
-        <form ref="form" onSubmit={handleSubmit}>
+        <form ref="form">
           <TextField
             name="name"
             fullWidth={true}
@@ -75,4 +73,4 @@ class NewStockForm extends Component {
   }
 }
 
-export default NewStockForm;
+export default AddStockForm;
