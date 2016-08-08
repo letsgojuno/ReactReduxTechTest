@@ -7,7 +7,7 @@
     "dev": "budo src/index.js --dir src --open -- -t babelify",
     "build": "npm run clean && npm run copy & npm run webpack",
     "webpack": "webpack --config ./ops/webpack.config.js",
-    "clean": "rm -r dist/*",
+    "clean": "rimraf dist",
     "copy": "copyfiles -f src/index.html dist",
     "build:serve": "npm run build && npm run serve",
     "serve": "budo -d dist --open"
@@ -25,6 +25,7 @@
     "copy": "^0.3.0",
     "copyfiles": "^1.0.0",
     "json-loader": "^0.5.4",
+    "rimraf": "^2.5.4",
     "webpack": "^2.1.0-beta.20"
   },
   "dependencies": {

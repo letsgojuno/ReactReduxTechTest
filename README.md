@@ -4,6 +4,10 @@
 
 The app comes pre built, it can be viewed by opening the `index.html` file in `dist`.
 
+When you run the app you will see two persisted stock items.
+
+----
+
 To build the app or run from a development server you will need to install the dependencies with `npm install`
 Once this is complete there are a few different tasks defined in `package.json` > `scripts`
 
