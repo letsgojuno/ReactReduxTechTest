@@ -6,7 +6,7 @@ const persistedState = {
       name: 'stock one',
       description: 'description',
       price: 100,
-      date: 'Mon Aug 08 2016 10:38:58 GMT+0100 (BST)',
+      date: '2016-08-28',
       taxable: true
     },
     {
@@ -14,7 +14,7 @@ const persistedState = {
       name: 'stock two',
       description: 'description',
       price: 20.00,
-      date: 'Mon Aug 08 2016 10:38:58 GMT+0100 (BST)',
+      date: '2016-08-28',
       taxable: false
     }
   ]

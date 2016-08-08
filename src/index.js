@@ -19,6 +19,8 @@ import persistedState from './state/persistedState';
 // are creating the store with the initial state set.
 const store = configureStore(persistedState);
 
+window.store = store;
+
 render(
   <Root store={store} />,
   document.getElementById('root')

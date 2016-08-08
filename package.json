@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "budo src/index.js --dir src --open -- -t babelify",
     "build": "npm run clean && npm run copy & npm run webpack",
     "webpack": "webpack --config ./ops/webpack.config.js",
     "clean": "rm -r dist/*",
     "copy": "copyfiles -f src/index.html dist",
+    "build:serve": "npm run build && npm run serve",
     "serve": "budo -d dist --open"
   },
   "keywords": [],
