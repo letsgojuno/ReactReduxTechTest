@@ -38,8 +38,6 @@ class App extends Component {
       snackbar: false,
       snackbar_message: ''
     };
-
-    this.addStock = this.props.onAddStock;
   }
 
   closeDialog() {
@@ -68,7 +66,7 @@ class App extends Component {
         snackbar: true,
       })
     } else {
-      this.addStock(input);
+      this.props.onAddStock(input);
       this.setState({
         snackbar: false
       });
