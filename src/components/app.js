@@ -12,7 +12,7 @@ import AddStockForm from './addStockForm';
 import StockList from './stocklist';
 
 // State dependencies
-import {addStock} from '../state/actions/index.js';
+import * as actions from '../state/actions/index.js';
 
 /**
  * Main app component.
@@ -125,5 +125,5 @@ const mapStateToProps = (state) => ({});
 
 export default connect(
   mapStateToProps,
-  { addStock }
+  actions
 )(App);
