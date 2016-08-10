@@ -66,7 +66,7 @@ class App extends Component {
         snackbar: true,
       })
     } else {
-      this.props.onAddStock(input);
+      this.props.addStock(input);
       this.setState({
         snackbar: false
       });
@@ -125,5 +125,5 @@ const mapStateToProps = (state) => ({});
 
 export default connect(
   mapStateToProps,
-  { onAddStock: addStock }
+  { addStock }
 )(App);
