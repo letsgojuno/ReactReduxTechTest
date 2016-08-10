@@ -15,10 +15,6 @@ import {capitalize} from '../utils/index.js';
  * I'm using react material UI to render the dialog and the various inputs.
  */
 class AddStockForm extends Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = props.onSubmit;
-  }
 
   /**
    * A quick and dirty validation method.
@@ -52,7 +48,7 @@ class AddStockForm extends Component {
       empty: true
     });
 
-    this.onSubmit(this.validateInput(input), input);
+    this.props.onSubmit(this.validateInput(input), input);
   }
 
   render() {
