@@ -93,6 +93,7 @@ class App extends Component {
             />
 
           <Drawer
+            docked={false}
             open={this.state.drawer}
             onRequestChange={(open) => this.setState({
               drawer: open
@@ -121,9 +122,7 @@ class App extends Component {
 // The connect component is a HOC that uses context in react
 // to make the store available to any wrapped components.
 // Saving the need to pass the store ourselves.
-const mapStateToProps = (state) => ({});
-
 export default connect(
-  mapStateToProps,
+  null,
   actions
 )(App);
